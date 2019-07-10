@@ -1,6 +1,8 @@
 import request from '@/utils/request'
+
 const group_name = 'gathering'
 const api_name = 'gathering'
+
 export default {
   getList() {
     return request(
@@ -34,7 +36,7 @@ export default {
     })
   },
   update(id, pojo) {
-    if (id == null || id == '') {
+    if (id == null || id === '') {
       return this.save(pojo)
     }
     return request({
