@@ -20,7 +20,6 @@ export default {
         data: searchMap
       }
     )
-
   },
   save(pojo) {
     return request({
