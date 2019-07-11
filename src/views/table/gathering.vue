@@ -178,6 +178,7 @@ export default {
     },
     handleSave() {
       gatheringApi.update(this.id, this.pojo).then(response => {
+        // 提示框
         this.$message({
           message: response.message,
           type: response.flag ? 'success' : 'error'
