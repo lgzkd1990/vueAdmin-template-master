@@ -10,17 +10,17 @@ Vue.use(Router)
 import Layout from '../views/layout/Layout'
 
 /**
-* hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
-* alwaysShow: true               if set true, will always show the root menu, whatever its child routes length
-*                                if not set alwaysShow, only more than one route under the children
-*                                it will becomes nested mode, otherwise not show the root menu
-* redirect: noredirect           if `redirect:noredirect` will no redirct in the breadcrumb
-* name:'router-name'             the name is used by <keep-alive> (must set!!!)
-* meta : {
+ * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
+ * alwaysShow: true               if set true, will always show the root menu, whatever its child routes length
+ *                                if not set alwaysShow, only more than one route under the children
+ *                                it will becomes nested mode, otherwise not show the root menu
+ * redirect: noredirect           if `redirect:noredirect` will no redirct in the breadcrumb
+ * name:'router-name'             the name is used by <keep-alive> (must set!!!)
+ * meta : {
     title: 'title'               the name show in submenu and breadcrumb (recommend set)
     icon: 'svg-name'             the icon show in the sidebar,
   }
-**/
+ **/
 export const constantRouterMap = [
   { path: '/login', component: () => import('@/views/login/index'), hidden: true },
   { path: '/404', component: () => import('@/views/404'), hidden: true },
@@ -65,6 +65,54 @@ export const constantRouterMap = [
         name: 'Form',
         component: () => import('@/views/table/gathering'),
         meta: { title: '活动管理', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/recruit',
+    name: 'Recruit',
+    component: Layout,
+    meta: { title: '招聘管理', icon: 'example' },
+    children: [
+
+      {
+        path: 'enterprice',
+        name: 'enterprice',
+        component: () => import('@/views/table/enterprise'),
+        meta: { title: '企业管理', icon: 'table' }
+      },
+      {
+        path: 'recruit',
+        name: 'recruit',
+        component: () => import('@/views/table/recruit'),
+        meta: { title: '招聘信息', icon: 'tree' }
+      }
+
+    ]
+  },
+  {
+    path: '/article',
+    component: Layout,
+    name: 'article',
+    meta: { title: '文章管理', icon: 'example' },
+    children: [
+      {
+        path: 'channel',
+        name: 'channel',
+        component: () => import('@/views/table/channel'),
+        meta: { title: '频道管理', icon: 'table' }
+      },
+      {
+        path: 'column',
+        name: 'column',
+        component: () => import('@/views/table/column'),
+        meta: { title: '专栏审核', icon: 'table' }
+      },
+      {
+        path: 'article',
+        name: 'article',
+        component: () => import('@/views/table/article'),
+        meta: { title: '文章审核', icon: 'table' }
       }
     ]
   },
